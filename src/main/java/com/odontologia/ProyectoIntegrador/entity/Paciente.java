@@ -14,7 +14,8 @@ public class Paciente {
 
     private Odontologo odontologo;
 
-
+    public Paciente() {
+    }
 
     public Paciente(int id, String nombre, String apellido, String dni, LocalDate fechaIngreso, Domicilio domicilio) {
         this.id = id;

@@ -43,7 +43,15 @@ public class PacienteService implements IPacienteService {
 
     @Override
     public void eliminarPaciente(int id) {
+
         pacienteIDao.eliminar(id);
+    }
+
+    @Override
+    public Paciente actualizarPaciente(Paciente paciente) {
+
+        return pacienteIDao.actualizar(paciente);
+
     }
 
 

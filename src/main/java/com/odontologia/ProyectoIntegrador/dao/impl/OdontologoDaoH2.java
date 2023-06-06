@@ -163,7 +163,47 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
 
     @Override
     public Odontologo actualizar(Odontologo odontologo) {
-      return null;
+        Connection connection = null;
+        try {
+            connection = H2Connection.getConnection();
+            connection.setAutoCommit(false);
+
+            PreparedStatement ps = connection.prepareStatement("UPDATE ODONTOLOGOS SET MATRICULA = ?, NOMBRE = ?, APELLIDO = ? WHERE ID = ?");
+
+            ps.setString(1, odontologo.getMatricula());
+            ps.setString(2, odontologo.getNombre());
+            ps.setString(3, odontologo.getApellido());
+
+            ps.setInt(6, odontologo.getId());
+
+            ps.execute();
+
+            connection.commit();
+            LOGGER.info("Se ha actualizado el odontologo: " + odontologo);
+
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+            e.printStackTrace();
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                    System.out.println("Tuvimos un problema");
+                    e.printStackTrace();
+                } catch (SQLException exception) {
+                    LOGGER.error(exception.getMessage());
+                    exception.printStackTrace();
+                }
+            }
+        } finally {
+            try {
+                connection.close();
+            } catch (Exception e) {
+                LOGGER.error("Ha ocurrido un error al intentar cerrar la bdd. " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+
+        return odontologo;
 
     }
 

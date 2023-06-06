@@ -195,7 +195,49 @@ public class PacienteDaoH2 implements IDao<Paciente> {
 
     @Override
     public Paciente actualizar(Paciente paciente) {
-        return null;
+        Connection connection = null;
+        try {
+            connection = H2Connection.getConnection();
+            connection.setAutoCommit(false);
+
+            PreparedStatement ps = connection.prepareStatement("UPDATE PACIENTES SET NOMBRE = ?, APELLIDO = ?, DNI = ?, FECHA = ?, DOMICILIO_ID = ? WHERE ID = ?");
+
+            ps.setString(1, paciente.getNombre());
+            ps.setString(2, paciente.getApellido());
+            ps.setString(3, paciente.getDni());
+            ps.setDate(4, Date.valueOf(paciente.getFechaIngreso()));
+            ps.setInt(5, paciente.getDomicilio().getId());
+
+            ps.setInt(6, paciente.getId());
+
+            ps.execute();
+
+            connection.commit();
+            LOGGER.info("Se ha actualizado el paciente: " + paciente);
+
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage());
+            e.printStackTrace();
+            if (connection != null) {
+                try {
+                    connection.rollback();
+                    System.out.println("Tuvimos un problema");
+                    e.printStackTrace();
+                } catch (SQLException exception) {
+                    LOGGER.error(exception.getMessage());
+                    exception.printStackTrace();
+                }
+            }
+        } finally {
+            try {
+                connection.close();
+            } catch (Exception e) {
+                LOGGER.error("Ha ocurrido un error al intentar cerrar la bdd. " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+
+        return paciente;
     }
 
 

@@ -16,6 +16,8 @@ public interface IPacienteService {
 
     void eliminarPaciente(int id);
 
+    Paciente actualizarPaciente(Paciente paciente);
+
 
 
 }

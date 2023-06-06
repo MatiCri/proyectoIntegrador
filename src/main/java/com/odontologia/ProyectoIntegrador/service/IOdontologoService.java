@@ -14,5 +14,7 @@ public interface IOdontologoService {
 
     void eliminarOdontologo(int id);
 
+    Odontologo actualizarOdontologo(Odontologo odontologo);
+
 
 }
