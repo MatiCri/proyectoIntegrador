@@ -16,13 +16,17 @@ public class PacienteService implements IPacienteService {
 
     @Autowired
     public PacienteService(IDao<Paciente> pacienteIDao) {
+
         this.pacienteIDao = pacienteIDao;
+
     }
 
+    @Override
     public Paciente guardarPaciente(Paciente paciente) {
         return pacienteIDao.guardar(paciente);
     }
 
+    @Override
     public Paciente buscarPacientePorId(int id) {
         return pacienteIDao.buscarPorId(id);
     }
@@ -37,6 +41,7 @@ public class PacienteService implements IPacienteService {
         return pacienteIDao.buscarPorCriterio(dni);
     }
 
+    @Override
     public void eliminarPaciente(int id) {
         pacienteIDao.eliminar(id);
     }

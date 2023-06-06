@@ -193,6 +193,11 @@ public class PacienteDaoH2 implements IDao<Paciente> {
         return paciente;
     }
 
+    @Override
+    public Paciente actualizar(Paciente paciente) {
+        return null;
+    }
+
 
     private Paciente crearObjetoPaciente(ResultSet resultSet) throws SQLException {
         int idPaciente = resultSet.getInt("id");

@@ -8,10 +8,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 
-@Controller
-//@RequestMapping("/pacientes")
+@RestController
+@RequestMapping("/pacientes")
 public class PacienteController {
 
     private IPacienteService pacienteService;
@@ -21,18 +22,20 @@ public class PacienteController {
 
         this.pacienteService = pacienteService;
     }
+//
+//    @GetMapping("/pacientes")
+//    public String buscarPacientePorDni(Model model, @RequestParam("dni") String dni){
+//
+//        Paciente paciente = pacienteService.buscarPacientePorDni(dni);
+//
+//        //agregar los atributos del objeto al modelo que mostraremos en la vista
+//        model.addAttribute("nombre", paciente.getNombre());
+//        model.addAttribute("apellido", paciente.getApellido());
+//
+//        return "pacientes";
+//
+//    }
 
-    @GetMapping("/pacientes")
-    public String buscarPacientePorDni(Model model, @RequestParam("dni") String dni){
 
-        Paciente paciente = pacienteService.buscarPacientePorDni(dni);
-
-        //agregar los atributos del objeto al modelo que mostraremos en la vista
-        model.addAttribute("nombre", paciente.getNombre());
-        model.addAttribute("apellido", paciente.getApellido());
-
-        return "pacientes";
-
-    }
 
 }
