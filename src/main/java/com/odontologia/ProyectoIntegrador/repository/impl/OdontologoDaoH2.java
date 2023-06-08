@@ -1,7 +1,7 @@
-package com.odontologia.ProyectoIntegrador.dao.impl;
+package com.odontologia.ProyectoIntegrador.repository.impl;
 
-import com.odontologia.ProyectoIntegrador.dao.H2Connection;
-import com.odontologia.ProyectoIntegrador.dao.IDao;
+import com.odontologia.ProyectoIntegrador.repository.H2Connection;
+import com.odontologia.ProyectoIntegrador.repository.IDao;
 import com.odontologia.ProyectoIntegrador.entity.Odontologo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

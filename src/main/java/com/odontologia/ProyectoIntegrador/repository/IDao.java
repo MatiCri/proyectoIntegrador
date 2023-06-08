@@ -1,4 +1,4 @@
-package com.odontologia.ProyectoIntegrador.dao;
+package com.odontologia.ProyectoIntegrador.repository;
 
 import java.util.List;
 
