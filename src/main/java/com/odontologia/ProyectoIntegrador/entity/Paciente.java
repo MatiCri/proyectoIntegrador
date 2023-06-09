@@ -9,10 +9,7 @@ public class Paciente {
     private String apellido;
     private String dni;
     private LocalDate fechaIngreso;
-
     private Domicilio domicilio;
-
-    private Odontologo odontologo;
 
     public Paciente() {
     }
