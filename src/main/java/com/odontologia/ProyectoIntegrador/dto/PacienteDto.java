@@ -1,31 +1,28 @@
 package com.odontologia.ProyectoIntegrador.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.odontologia.ProyectoIntegrador.entity.Domicilio;
-import com.odontologia.ProyectoIntegrador.entity.Odontologo;
-import com.odontologia.ProyectoIntegrador.entity.Paciente;
-import com.odontologia.ProyectoIntegrador.entity.Turno;
 
 import java.time.LocalDate;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
     public class PacienteDto {
-
+        private Long id;
         private String nombre;
         private String apellido;
         private String dni;
         private LocalDate fechaIngreso;
-        private String domicilio;
+        private DomicilioDto domicilioDto;
 
-    public PacienteDto(String nombre, String apellido, String dni, LocalDate fechaIngreso, String domicilio) {
+    public PacienteDto() {
+    }
+
+    public PacienteDto(Long id, String nombre, String apellido, String dni, LocalDate fechaIngreso, DomicilioDto domicilioDto) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.fechaIngreso = fechaIngreso;
-        this.domicilio = domicilio;
-    }
-
-    public PacienteDto() {
+        this.domicilioDto = domicilioDto;
     }
 
     public String getNombre() {
@@ -60,20 +57,13 @@ import java.time.LocalDate;
         this.fechaIngreso = fechaIngreso;
     }
 
-    public String getDomicilio() {
-        return domicilio;
+    public DomicilioDto getDomicilio() {
+        return domicilioDto;
     }
 
-    public void setDomicilio(String domicilio) {
-        this.domicilio = domicilio;
+    public void setDomicilio(DomicilioDto domicilioDto) {
+        this.domicilioDto = domicilioDto;
     }
 
-
-    public static PacienteDto fromPaciente(Paciente paciente){
-        String domicilio = paciente.getDomicilio().getCalle();
-
-        return new PacienteDto(paciente.getNombre(), paciente.getApellido(), paciente.getDni(), paciente.getFechaIngreso(), domicilio);
-
-    }
 }
 

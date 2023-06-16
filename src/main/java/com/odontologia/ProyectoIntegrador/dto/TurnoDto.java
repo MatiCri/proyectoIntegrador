@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 public class TurnoDto {
 
+    private Long id;
     private String paciente;
     private String odontologo;
     private LocalDateTime fecha;
@@ -16,7 +17,8 @@ public class TurnoDto {
     public TurnoDto() {
     }
 
-    public TurnoDto(String paciente, String odontologo, LocalDateTime fecha) {
+    public TurnoDto(Long id, String paciente, String odontologo, LocalDateTime fecha) {
+        this.id = id;
         this.paciente = paciente;
         this.odontologo = odontologo;
         this.fecha = fecha;
@@ -48,9 +50,9 @@ public class TurnoDto {
 
     public static TurnoDto fromTurno(Turno turno){
         String paciente = turno.getPaciente().getNombre() + " " + turno.getPaciente().getApellido();
-        String odontologo = turno.getOdonotologo().getNombre() + " " + turno.getOdonotologo().getNombre();
+        String odontologo = turno.getOdontologo().getNombre() + " " + turno.getOdontologo().getNombre();
 
-        return new TurnoDto(paciente, odontologo, turno.getFecha());
+        return new TurnoDto(turno.getId(), paciente, odontologo, turno.getFecha());
 
     }
 

@@ -1,37 +1,28 @@
 package com.odontologia.ProyectoIntegrador.entity;
 
-import java.time.LocalDate;
+import javax.persistence.*;
 import java.time.LocalDateTime;
-
+@Entity
+@Table(name = "TURNOS")
 public class Turno {
-
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private Paciente paciente;
-    private Odontologo odonotologo;
+    private Odontologo odontologo;
     private LocalDateTime fecha;
 
-    public Turno(int id, Paciente paciente, Odontologo odonotologo, LocalDateTime fecha) {
-        this.id = id;
+    public Turno(Paciente paciente, Odontologo odontologo, LocalDateTime fecha) {
         this.paciente = paciente;
-        this.odonotologo = odonotologo;
-        this.fecha = fecha;
-    }
-
-    public Turno(Paciente paciente, Odontologo odonotologo, LocalDateTime fecha) {
-        this.paciente = paciente;
-        this.odonotologo = odonotologo;
+        this.odontologo = odontologo;
         this.fecha = fecha;
     }
 
     public Turno() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public Paciente getPaciente() {
@@ -42,12 +33,12 @@ public class Turno {
         this.paciente = paciente;
     }
 
-    public Odontologo getOdonotologo() {
-        return odonotologo;
+    public Odontologo getOdontologo() {
+        return odontologo;
     }
 
-    public void setOdonotologo(Odontologo odonotologo) {
-        this.odonotologo = odonotologo;
+    public void setOdontologo(Odontologo odontologo) {
+        this.odontologo = odontologo;
     }
 
     public LocalDateTime getFecha() {

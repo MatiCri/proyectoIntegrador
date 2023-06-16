@@ -7,7 +7,6 @@ import com.odontologia.ProyectoIntegrador.entity.Turno;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -35,7 +34,7 @@ public class TurnoDao implements IDao<Turno> {
         Turno guardado = null;
 
         Paciente paciente = pacienteDaoH2.buscarPorId(turno.getPaciente().getId());
-        Odontologo odontologo = odontologoDaoH2.buscarPorId(turno.getOdonotologo().getId());
+        Odontologo odontologo = odontologoDaoH2.buscarPorId(turno.getOdontologo().getId());
 
         if(paciente != null && odontologo !=null){
             guardado = turno;
