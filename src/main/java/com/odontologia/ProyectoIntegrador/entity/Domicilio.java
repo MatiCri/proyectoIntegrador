@@ -2,7 +2,7 @@ package com.odontologia.ProyectoIntegrador.entity;
 
 public class Domicilio {
 
-    private int id;
+    private Long id;
     private String calle;
     private int numero;
     private String localidad;
